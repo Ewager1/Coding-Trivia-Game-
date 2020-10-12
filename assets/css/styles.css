@@ -4,3 +4,8 @@
     margin-right: 25%; 
     margin-top: 5%;
 }
+
+/*hides elements*/ 
+.hidden{ 
+    display:none !important;
+}
