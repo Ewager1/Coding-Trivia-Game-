@@ -15,6 +15,8 @@
 
 
 /* assignment section */ 
+
+/* Title Section */
 const questions = [
     { 
         header: 'What does === express true or false for in JavaScript?', 
@@ -72,14 +74,15 @@ let answerButton1 = document.querySelector('.answerButton1')
 let answerButton2 = document.querySelector('.answerButton2')
 let answerButton3 = document.querySelector('.answerButton3')
 let answerButton4 = document.querySelector('.answerButton4')
-const titleScreenJumbo = document.querySelector('.titleScreenJumbo')
-const questionsJumbo = document.querySelector('.questionsJumbo')
+
 const questionText = document.querySelector('.questionText')
 let timer = document.querySelector('.timer')
 let rightOrWrongText = document.querySelector('.rightOrWrongText')
 let secondsLeft = 75; //number of seconds to take quiz 
-
-
+let questionSection = document.querySelectorAll('.questionSection')
+let titleSection = document.querySelectorAll('.titleSection')
+const jumbotron = document.querySelector('.jumbotron')
+console.log(jumbotron)
 
 //try to include this in the original asignment later 
 answerButton1.innerHTML = questions[0].answers[0];
@@ -105,9 +108,16 @@ function setTime() {
 //hides current content and brings up next question
 function startQuiz(event) {
     event.stopPropagation();
+    jumbotron.classList.remove('text-center')
     setTime();
-    titleScreenJumbo.classList.add('hidden')
-    questionsJumbo.classList.remove('hidden')
+    for(i=0; i<titleSection.length; i++){
+        titleSection[i].classList.add('hidden')
+        console.log(questionSection[i])
+    }
+    for(i=0; i<questionSection.length; i++){
+        questionSection[i].classList.remove('hidden')
+        console.log(questionSection[i])
+    }
 }
 
 
