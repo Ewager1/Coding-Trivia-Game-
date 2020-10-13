@@ -14,19 +14,14 @@
     c.high scores page
     d.add sound effects
     e. add favicon 
+7. stretch goal: randomize questions, sounds, animations 
     
 
 
 /* assignment section */ 
-const button = document.querySelector('.button')
-const titleScreenJumbo = document.querySelector('.titleScreenJumbo')
-const questionsJumbo = document.querySelector('.questionsJumbo')
-
-
-
 const questions = [
     { 
-        header: 'What does === return true or false for in JavaScript?', 
+        header: 'What does === express true or false for in JavaScript?', 
         answers: [
             'only the type',
             'only the placement',
@@ -62,10 +57,31 @@ const questions = [
         answers:[
             "//",
             "/*",
-            "<!>",
+            "!<>",
             "/* */",]  
     }
 ]
+let qIndex = 0 // question innerHTML is based on this. 
+questionsLength = questions.length-1 //used to end quiz if all questions answered
+const startButton = document.querySelector('.button')
+let answerButton1 = document.querySelector('.answerButton1')
+let answerButton2 = document.querySelector('.answerButton2')
+let answerButton3 = document.querySelector('.answerButton3')
+let answerButton4 = document.querySelector('.answerButton4')
+const titleScreenJumbo = document.querySelector('.titleScreenJumbo')
+const questionsJumbo = document.querySelector('.questionsJumbo')
+const questionText = document.querySelector('.questionText')
+
+answerButton1.innerHTML = questions[0].answers[0];
+answerButton2.innerHTML = questions[0].answers[1];
+answerButton3.innerHTML = questions[0].answers[2];
+answerButton4.innerHTML = questions[0].answers[3];
+questionText.innerHTML = questions[0].header;
+
+
+
+
+
 
 
 //hides current content and brings up next question
@@ -77,5 +93,33 @@ function startQuiz(event) {
     
 }
 
-button.addEventListener('click',startQuiz);
+//button click changes all text to next question 
+function answerButton(){
+    answerButton1.innerHTML = questions[qIndex].answers[0];
+    answerButton2.innerHTML = questions[qIndex].answers[1];
+    answerButton3.innerHTML = questions[qIndex].answers[2];
+    answerButton4.innerHTML = questions[qIndex].answers[3];
+    questionText.innerHTML = questions[qIndex].header;
+    qIndex++ 
+    }
+
+if(qIndex<questionsLength){
+    answerButton()
+}
+else{
+    
+}
+
+
+
+
+
+
+
+questionText.innerHTML = questions[0].header
+startButton.addEventListener('click',startQuiz);
+answerButton1.addEventListener('click',answerButton)
+answerButton2.addEventListener('click',answerButton)
+answerButton3.addEventListener('click',answerButton)
+answerButton4.addEventListener('click',answerButton)
 
