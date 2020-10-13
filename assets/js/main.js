@@ -71,6 +71,9 @@ let answerButton4 = document.querySelector('.answerButton4')
 const titleScreenJumbo = document.querySelector('.titleScreenJumbo')
 const questionsJumbo = document.querySelector('.questionsJumbo')
 const questionText = document.querySelector('.questionText')
+const timer = document.querySelector('.timer')
+let secondsLeft = 75; //number of seconds to take quiz 
+timer.innerHTML = 'Time: ' + secondsLeft; //let's user see starting time before quiz start
 
 answerButton1.innerHTML = questions[0].answers[0];
 answerButton2.innerHTML = questions[0].answers[1];
@@ -81,12 +84,25 @@ questionText.innerHTML = questions[0].header;
 
 
 
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timer.innerHTML = "Time: " + secondsLeft;
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+    }
+
+  }, 1000);
+}
+
+
 
 
 
 //hides current content and brings up next question
 function startQuiz(event) {
     event.stopPropagation();
+    setTime();
     titleScreenJumbo.classList.add('hidden')
     questionsJumbo.classList.remove('hidden')
     //timer will have to go here
