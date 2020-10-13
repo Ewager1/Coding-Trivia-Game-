@@ -76,6 +76,7 @@ const titleScreenJumbo = document.querySelector('.titleScreenJumbo')
 const questionsJumbo = document.querySelector('.questionsJumbo')
 const questionText = document.querySelector('.questionText')
 let timer = document.querySelector('.timer')
+let rightOrWrongText = document.querySelector('.rightOrWrongText')
 let secondsLeft = 75; //number of seconds to take quiz 
 
 
@@ -115,6 +116,10 @@ function answerButton(event){
     // deducts 15 seconds if the wrong answer is chosen 
      if (event.target.innerHTML !==questions[qIndex].correctAnswer){
          secondsLeft -= 15;
+         rightOrWrongText.innerHTML = 'Wrong'
+     }
+     else{
+         rightOrWrongText.innerHTML = 'Correct'
      }
     
     if(questions[0].answers[0]){
