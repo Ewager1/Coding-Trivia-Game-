@@ -93,22 +93,22 @@ function startQuiz(event) {
     
 }
 
-//button click changes all text to next question 
+//redirects quiz after last question answered or pulls in next question
 function answerButton(){
+    if(qIndex === questionsLength){
+        window.location.href = "/highScores.html"; 
+    }
+    else{
+    qIndex++ 
     answerButton1.innerHTML = questions[qIndex].answers[0];
     answerButton2.innerHTML = questions[qIndex].answers[1];
     answerButton3.innerHTML = questions[qIndex].answers[2];
     answerButton4.innerHTML = questions[qIndex].answers[3];
     questionText.innerHTML = questions[qIndex].header;
-    qIndex++ 
+    }
     }
 
-if(qIndex<questionsLength){
-    answerButton()
-}
-else{
-    
-}
+
 
 
 
