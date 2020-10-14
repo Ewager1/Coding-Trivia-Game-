@@ -197,5 +197,6 @@ answerButton2.addEventListener('click',answerButton)
 answerButton3.addEventListener('click',answerButton)
 answerButton4.addEventListener('click',answerButton)
 submitButton.addEventListener('click', function(){
-    console.log(scoreInput)
+    localStorage.setItem(scoreInput.value, secondsLeft )
+    console.log(localStorage)
 })
