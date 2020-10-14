@@ -1,22 +1,15 @@
-/* next steps
-
-1. create ending screen content in JS 
-    a. create queryselectorAll class name and assign them in js 
-    b. create logic for timer=0 to jump to ending screen
-    c. add logic for finish questions jumps to ending screen
-    d. add logic so score stops counting when finished questions 
-    e. ending screen should have 
-        - h tag that says All Done
-        - p tag that says 'your final score is (current timer number)'
-        - input tag with "enter inntitials" 
-        - a submit button that that saves innitials and score in computer memory and redirects to high scores page
-
+/* next  steps 
+1. create event listener for submit button that console.logs the input. 
+- it that works, move on to storage
+- if not, look into creating a change event for input
 6. style 
     a. title page
     b. questions
     c.high scores page
     d.add sound effects
     e. add favicon 
+    f. add underlign for correct/inncorect
+    g. center quizEnd section 
 7. stretch goal: randomize questions, sounds, animations 
     -add lists to questions. Then, find real fase. then, fix logic to questions
 
@@ -101,7 +94,6 @@ let questionSection = document.querySelectorAll('.questionSection')
 let quizFinished = document.querySelectorAll('.quizFinished')
 //p tag that tells user their final score 
 let yourFinalScore = document.querySelector('.yourFinalScore')
-
 //sets first question text to header
 questionText.innerHTML = questions[0].header;
 //sets first question text to buttons
@@ -111,6 +103,12 @@ answerButton3.innerHTML = questions[0].answers[2];
 answerButton4.innerHTML = questions[0].answers[3];
 //let's user see starting time before quiz start
 timer.innerHTML = 'Time: ' + secondsLeft; 
+//when set to true at end of quiz, causes timer freeze. 
+let stopTimer = false
+//grabs the user input for their innitials
+let scoreInput = document.querySelector('.scoreInput')
+//submit button on quizEnd that captures user input
+let submitButton = document.querySelector('.submit')
 
 
 
@@ -119,14 +117,20 @@ timer.innerHTML = 'Time: ' + secondsLeft;
 function setTime() {
   let timerInterval = setInterval(function() {
     secondsLeft--;
+    // timer on top right of screen 
     timer.innerHTML = "Time: " + secondsLeft;
        //sets yourFinalScore to text and time 
        yourFinalScore.innerHTML ='Your final score is ' + secondsLeft
     //pauses the timer if the user finishes all questions
-    if(questionIndex === questionsLength){
-        clearInterval(timerInterval); 
+    if(stopTimer === true ){
+        //resets timer to 0 if wrong answer causes to drop into negative numbers 
+        if(secondsLeft < 0){
+            secondsLeft = 0;
+            yourFinalScore.innerHTML = 'Your final score is ' + secondsLeft
+        }
+        clearInterval(timerInterval);    
     }
-    // stops timer is seconds equal 0, resets to 0 if timer is a negative number due to wrong answer. 
+    // stops timer at 0, and resets timer to 0 if wrong answer causes drop to negative numbers 
     if(secondsLeft === 0 || secondsLeft < 0) {
       secondsLeft = 0;
       timer.innerHTML = "Time: " + secondsLeft;
@@ -176,16 +180,15 @@ function rightOrWrong(){
     }}
 //clears questionSection content and brings up quiz Finished content 
 function quizEndScreen(){
-    
+    stopTimer = true
     for(i=0; i<questionSection.length; i++){
         questionSection[i].classList.add('hidden')
     }
-    for(i=0; i<questionSection.length; i++){
+    for(i=0; i<quizFinished.length; i++){
         quizFinished[i].classList.remove('hidden')
     }   
  
 }
-   
 
 //Event listeners   
 startButton.addEventListener('click',startQuiz)
@@ -193,4 +196,6 @@ answerButton1.addEventListener('click',answerButton)
 answerButton2.addEventListener('click',answerButton)
 answerButton3.addEventListener('click',answerButton)
 answerButton4.addEventListener('click',answerButton)
-
+submitButton.addEventListener('click', function(){
+    console.log(scoreInput)
+})
