@@ -82,7 +82,7 @@ let answerButton2 = document.querySelector('.answerButton2')
 let answerButton3 = document.querySelector('.answerButton3')
 let answerButton4 = document.querySelector('.answerButton4')
 //the text that states each question 
-const questionText = document.querySelector('.questionText')
+let questionText = document.querySelector('.questionText')
 //the countdown timer text on the top/right of screen
 let timer = document.querySelector('.timer')
 //the text that states whether a question was answered correctly or not
@@ -106,10 +106,14 @@ timer.innerHTML = 'Time: ' + secondsLeft;
 //when set to true at end of quiz, causes timer freeze. 
 let stopTimer = false
 //grabs the user input for their innitials
-let scoreInput = document.querySelector('.scoreInput')
+let nameInput = document.querySelector('.nameInput')
 //submit button on quizEnd that captures user input
 let submitButton = document.querySelector('.submit')
-
+let highScoresDisplay = document.querySelector('.highScoresDisplay')
+// sound effects. from https://freesound.org/people/Bertrof/sounds/351566/
+const rightAnswer = new Audio("/assets/sounds/correct1.wav");
+const wrongAnswer = new Audio("/assets/sounds/incorrect1.wav");
+const themeMusic = new Audio("/assets/sounds/Jeopardy-theme-song.mp3")
 
 
 //altered from activity 18 in activities.
@@ -150,6 +154,8 @@ function startQuiz(event) {
     for(i=0; i<questionSection.length; i++){
         questionSection[i].classList.remove('hidden')
     }
+    //starts theme music when quiz begins
+    themeMusic.play();
 }
 
 //redirects quiz after last question answered or pulls in next question
@@ -158,6 +164,7 @@ function answerButton(event){
     rightOrWrong();
     
     if(questionIndex === questionsLength){
+        quizInSession = false;
        quizEndScreen()
     }
     else{
@@ -174,9 +181,11 @@ function rightOrWrong(){
     if (event.target.innerHTML !==questions[questionIndex].correctAnswer){
         secondsLeft -= 15;
         rightOrWrongText.innerHTML = 'Wrong'
+        wrongAnswer.play();
     }
     else{
         rightOrWrongText.innerHTML = 'Correct'
+        rightAnswer.play();
     }}
 //clears questionSection content and brings up quiz Finished content 
 function quizEndScreen(){
@@ -197,6 +206,15 @@ answerButton2.addEventListener('click',answerButton)
 answerButton3.addEventListener('click',answerButton)
 answerButton4.addEventListener('click',answerButton)
 submitButton.addEventListener('click', function(){
-    localStorage.setItem(scoreInput.value, secondsLeft )
-    console.log(localStorage)
-})
+    //User error handling. next line altered from https://stackoverflow.com/questions/35948669/how-to-check-if-a-value-exists-in-an-object-using-javascript
+    if(Object.keys(localStorage).indexOf(nameInput.value) > -1){
+    alert('This name has been taken. Please choose another name')
+    }
+    //checks for empty string
+    else if(nameInput.value === ''){
+        alert('Oh are you the horse with no name? Please enter valid name. ')
+    }
+    else{
+    localStorage.setItem(nameInput.value, secondsLeft );
+    window.location.href = "/highScores.html";
+}})

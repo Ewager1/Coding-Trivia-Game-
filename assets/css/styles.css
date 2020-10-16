@@ -1,12 +1,17 @@
-/* Centers jumbotrons */ 
-.jumbo-margins{
-    margin-left: 25%;
-    margin-right: 25%; 
-    margin-top: 5%;
-}
+/* Adds jumbotron margins on larger screens */ 
+@media screen and (min-width: 850px) {
+    .jumbo-margins {
+        margin-left: 20%;
+        margin-right: 20%; 
+        margin-top: 5%;
+    }
+  }
+
 
 /*hides elements*/ 
 .hidden{ 
     display:none !important;
 }
+
+
 

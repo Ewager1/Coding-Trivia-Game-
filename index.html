@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <title>Document</title>
+    <title>JS Trivia Quiz</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,6 +37,7 @@
         >Start Quiz</a
       >
       <p class="lead questionText questionSection hidden titleSection"></p>
+      <!--Questions Section-->
       <a
         class="btn btn-primary btn-md button mb-3 answerButton1 questionSection hidden"
         href="#"
@@ -63,7 +65,12 @@
       <h3 class="rightOrWrongText questionSection hidden"></h3>
       <h2 class="quizFinished hidden">All done!</h2>
       <p class="quizFinished hidden yourFinalScore"></p>
-      <input type="text" value="Test" class="quizFinished hidden scoreInput" />
+      <input
+        type="text"
+        value=""
+        placeholder="Enter Name Here"
+        class="quizFinished hidden nameInput"
+      />
       <button type="submit" class="btn btn-primary quizFinished hidden submit">
         Submit
       </button>
