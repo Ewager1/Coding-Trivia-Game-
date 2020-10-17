@@ -1,14 +1,3 @@
-/*
-6. style 
-    a. title page
-    b. questions
-    c.high scores page
-    d.add sound effects
-    f. add underlign for correct/inncorect
-    g. center quizEnd section 
-7. stretch goal: randomize questions, 
-
-
 /* assignment section */
 
 //The jumbotron all data is held in
