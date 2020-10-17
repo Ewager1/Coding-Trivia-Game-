@@ -89,9 +89,9 @@ const nameInput = document.querySelector(".nameInput");
 const submitButton = document.querySelector(".submit");
 const highScoresDisplay = document.querySelector(".highScoresDisplay");
 // sound effects. from https://freesound.org/people/Bertrof/sounds/351566/
-const rightAnswer = new Audio("/assets/sounds/correct1.wav");
-const wrongAnswer = new Audio("/assets/sounds/incorrect1.wav");
-const themeMusic = new Audio("/assets/sounds/Jeopardy-theme-song.mp3");
+const rightAnswer = new Audio("../sounds/correct1.wav");
+const wrongAnswer = new Audio("../sounds/incorrect1.wav");
+const themeMusic = new Audio("../sounds/Jeopardy-theme-song.mp3");
 
 //altered from activity 18 in activities.
 //sets a coundown timer
@@ -198,6 +198,6 @@ submitButton.addEventListener("click", function () {
     alert("Oh are you the horse with no name? Please enter valid name. ");
   } else {
     localStorage.setItem(nameInput.value, secondsLeft);
-    window.location.href = "/highScores.html";
+    window.location.href = "../";
   }
 });
