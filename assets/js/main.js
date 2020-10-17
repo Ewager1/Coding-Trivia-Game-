@@ -198,6 +198,6 @@ submitButton.addEventListener("click", function () {
     alert("Oh are you the horse with no name? Please enter valid name. ");
   } else {
     localStorage.setItem(nameInput.value, secondsLeft);
-    window.location.href = "highScores.html";
+    window.location.href = "./highScores.html";
   }
 });
