@@ -13,5 +13,42 @@
     display:none !important;
 }
 
+.largerText{
+    font-size: x-large;
+}
 
+.underline{
+    border-bottom: 2px solid lightgray;
+    padding-bottom: 10px;
+}
 
+.dottedBorder {border: 2px dotted;}
+
+/* altered from https://stackoverflow.com/questions/18582555/change-color-with-css-over-time-back-and-forth*/
+/*alternates color festively!*/ 
+@keyframes colorChange {  
+    0% { color: blue; }
+    25% { color: purple; }
+    75% { color: red; }
+    100% { color: green; }
+  }
+  
+  .blinkdiv {
+      height: 100px;
+      -webkit-animation-name: colorChange;  
+      -webkit-animation-iteration-count: infinite;  
+      -webkit-animation-duration: 4s; 
+  }   
+
+  @keyframes borderColor {  
+    0% { border-color: blue; }
+    25% { border-color: purple; }
+    75% { border-color: red; }
+    100% { border-color: green; }
+  }
+  
+  .borderColor {
+      -webkit-animation-name: borderColor;  
+      -webkit-animation-iteration-count: infinite;  
+      -webkit-animation-duration: 4s; 
+  }   
