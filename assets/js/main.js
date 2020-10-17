@@ -100,9 +100,9 @@ const nameInput = document.querySelector(".nameInput");
 const submitButton = document.querySelector(".submit");
 const highScoresDisplay = document.querySelector(".highScoresDisplay");
 // sound effects. from https://freesound.org/people/Bertrof/sounds/351566/
-const rightAnswer = new Audio("/assets/sounds/correct1.wav");
-const wrongAnswer = new Audio("/assets/sounds/incorrect1.wav");
-const themeMusic = new Audio("/assets/sounds/Jeopardy-theme-song.mp3");
+const rightAnswer = new Audio("./assets/sounds/correct1.wav");
+const wrongAnswer = new Audio("./assets/sounds/incorrect1.wav");
+const themeMusic = new Audio("./assets/sounds/Jeopardy-theme-song.mp3");
 
 //altered from activity 18 in activities.
 //sets a coundown timer
@@ -123,8 +123,8 @@ function setTime() {
       clearInterval(timerInterval);
     }
     // stops timer at 0
-    if (secondsLeft < 0){
-        secondsLeft = 0;
+    if (secondsLeft < 0) {
+      secondsLeft = 0;
     }
     if (secondsLeft === 0) {
       timer.innerHTML = "Time: " + secondsLeft;
@@ -173,11 +173,11 @@ function rightOrWrong() {
     if (secondsLeft < 0) {
       secondsleft = 0;
     }
-    rightOrWrongText.style.color = 'red'
+    rightOrWrongText.style.color = "red";
     rightOrWrongText.innerHTML = "Wrong (-15 seconds)";
     wrongAnswer.play();
   } else {
-    rightOrWrongText.style.color = 'green'
+    rightOrWrongText.style.color = "green";
     rightOrWrongText.innerHTML = "Correct";
     rightAnswer.play();
   }
